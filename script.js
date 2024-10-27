@@ -29,25 +29,36 @@ function startPhysicsEngine() {
     Runner.run(runner, engine);
 
     // const collisionSound = new Audio('paypay.mp3'); 
-    const collisionSound = new Audio('collision.mp3'); 
+    // const collisionSound = new Audio('collision.mp3'); 
+
+    const collisionSounds = [
+        // new Audio('collision.mp3'),
+        // new Audio('paypay.mp3')
+        new Audio('piano2_1do.mp3'),
+        new Audio('piano2_3mi.mp3'),
+        new Audio('piano2_5so.mp3'),
+    ];
 
     // 衝突イベントのリスナーを設定
     Matter.Events.on(engine, 'collisionStart', function(event) {
-        // 音声を再生
-        collisionSound.currentTime = 0; // 音声をリセット
-        collisionSound.play(); // 音声を再生
+        const randomIndex = Math.floor(Math.random() * collisionSounds.length);
+        const randomSound = collisionSounds[randomIndex];
+
+        // 音声をリセットして再生
+        randomSound.currentTime = 0;
+        randomSound.play();
     });
 
-    const gap = 40;
-    // 複数の振り子を作成
-    const pendulums = [
-        { x: window.innerWidth / 2 - 2*gap, angle: -Math.PI / 3, density: 0.01 },
-        { x: window.innerWidth / 2 - gap, angle: 0, density: 0.01 },
-        { x: window.innerWidth / 2, angle: 0, density: 0.01 },
-        { x: window.innerWidth / 2 + gap, angle: 0, density: 0.01 },
-        { x: window.innerWidth / 2 + 2*gap, angle: 0, density: 0.01 }
-    ];
+    const gap = 60;
 
+    const pendulums = [
+        { x: window.innerWidth / 2 - 2 * gap, angle: parseFloat(document.getElementById('angle1').value), density: parseFloat(document.getElementById('density1').value) },
+        { x: window.innerWidth / 2 - gap, angle: parseFloat(document.getElementById('angle2').value), density: parseFloat(document.getElementById('density2').value) },
+        { x: window.innerWidth / 2, angle: parseFloat(document.getElementById('angle3').value), density: parseFloat(document.getElementById('density3').value) },
+        { x: window.innerWidth / 2 + gap, angle: parseFloat(document.getElementById('angle4').value), density: parseFloat(document.getElementById('density4').value) },
+        { x: window.innerWidth / 2 + 2 * gap, angle: parseFloat(document.getElementById('angle5').value), density: parseFloat(document.getElementById('density5').value) }
+    ];
+    
     pendulums.forEach(({ x, angle, density }) => 
         createPendulum(world, x, 100, 400, 20, angle, density)
     );

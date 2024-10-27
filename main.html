@@ -12,9 +12,48 @@
         canvas {
             display: block;
         }
+        .input-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
+    <div class="input-container">
+        <div>
+            <label for="angle1">振り子1の角度 (rad):</label>
+            <input type="number" id="angle1" value="-1" step="0.1">
+            <label for="density1">密度:</label>
+            <input type="number" id="density1" value="0.01" step="0.01">
+        </div>
+        <div>
+            <label for="angle2">振り子2の角度 (rad):</label>
+            <input type="number" id="angle2" value="0" step="0.1">
+            <label for="density2">密度:</label>
+            <input type="number" id="density2" value="0.01" step="0.01">
+        </div>
+        <div>
+            <label for="angle3">振り子3の角度 (rad):</label>
+            <input type="number" id="angle3" value="0" step="0.1">
+            <label for="density3">密度:</label>
+            <input type="number" id="density3" value="0.01" step="0.01">
+        </div>
+        <div>
+            <label for="angle4">振り子4の角度 (rad):</label>
+            <input type="number" id="angle4" value="0" step="0.1">
+            <label for="density4">密度:</label>
+            <input type="number" id="density4" value="0.01" step="0.01">
+        </div>    
+        <div>
+            <label for="angle5">振り子5の角度 (rad):</label>
+            <input type="number" id="angle5" value="0" step="0.1">
+            <label for="density5">密度:</label>
+            <input type="number" id="density5" value="0.01" step="0.01">
+        </div>
+    </div>
     <button id="startButton">物理エンジンを開始</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
     <script type="module" src="script.js"></script>
