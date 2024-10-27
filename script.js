@@ -28,6 +28,7 @@ function startPhysicsEngine() {
     const runner = Runner.create();
     Runner.run(runner, engine);
 
+    // const collisionSound = new Audio('paypay.mp3'); 
     const collisionSound = new Audio('collision.mp3'); 
 
     // 衝突イベントのリスナーを設定
@@ -37,10 +38,10 @@ function startPhysicsEngine() {
         collisionSound.play(); // 音声を再生
     });
 
-    const gap = 80;
+    const gap = 40;
     // 複数の振り子を作成
     const pendulums = [
-        { x: window.innerWidth / 2 - 2*gap, angle: -Math.PI / 3, density: 0.1 },
+        { x: window.innerWidth / 2 - 2*gap, angle: -Math.PI / 3, density: 0.01 },
         { x: window.innerWidth / 2 - gap, angle: 0, density: 0.01 },
         { x: window.innerWidth / 2, angle: 0, density: 0.01 },
         { x: window.innerWidth / 2 + gap, angle: 0, density: 0.01 },
