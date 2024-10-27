@@ -28,17 +28,6 @@ function startPhysicsEngine() {
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-    // const collisionSound = new Audio('paypay.mp3'); 
-    // const collisionSound = new Audio('collision.mp3'); 
-
-    const collisionSounds = [
-        // new Audio('collision.mp3'),
-        // new Audio('paypay.mp3')
-        new Audio('piano2_1do.mp3'),
-        new Audio('piano2_3mi.mp3'),
-        new Audio('piano2_5so.mp3'),
-    ];
-
     // 衝突イベントのリスナーを設定
     Matter.Events.on(engine, 'collisionStart', function(event) {
         const randomIndex = Math.floor(Math.random() * collisionSounds.length);
@@ -69,6 +58,27 @@ function startPhysicsEngine() {
         render.canvas.height = window.innerHeight;
     });
 }
+
+const sounds = {
+    collision: [new Audio('collision.mp3')],
+    paypay: [new Audio('paypay.mp3')],
+    piano: [
+        new Audio('piano2_1do.mp3'),
+        new Audio('piano2_3mi.mp3'),
+        new Audio('piano2_5so.mp3')
+    ]
+};
+
+let collisionSounds = sounds.collision;
+
+const soundGroupSelector = document.getElementById('soundGroupSelector');
+let selectedGroup = 'collision';  // デフォルトのサウンドグループは"collision"
+
+soundGroupSelector.addEventListener('change', (event) => {
+    selectedGroup = event.target.value;
+    collisionSounds = sounds[selectedGroup];
+    console.log('selectedGroup:', selectedGroup);
+});
 
 // スタートボタンのクリックで物理エンジンを開始
 document.getElementById('startButton').addEventListener('click', startPhysicsEngine);

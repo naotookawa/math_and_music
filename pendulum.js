@@ -9,7 +9,7 @@ function createPendulum(world, x, y, length, radius, initialAngle, density = 0.0
     const circleY = y + length * Math.cos(initialAngle);
 
     const circle = Bodies.circle(circleX, circleY, radius, {
-        restitution: 1.3,
+        restitution: 1.4,
         density: density,
         friction: 0 // 摩擦を追加
     });
