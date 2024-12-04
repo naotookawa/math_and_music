@@ -10,6 +10,7 @@ const Engine = Matter.Engine,
 // 物理エンジンの初期化と開始
 function startPhysicsEngine() {
     const engine = Engine.create();
+    // engine.world.gravity.y = 0.8;
     const world = engine.world;
 
     const render = Render.create({
